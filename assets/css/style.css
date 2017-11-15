@@ -1,5 +1,10 @@
-.crystal-image {
+ .crystal-image {
       width: 200px;
       height: 200px;
       border: 20px;
       padding: 20px;
+  }
+
+  #collector {
+
+  }
