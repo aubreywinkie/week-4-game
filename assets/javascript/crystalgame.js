@@ -3,10 +3,10 @@ var targetNumber = [Math.floor(Math.random() * 102 + 19 )];
 
 $("#number-to-guess").text(targetNumber);
 var counter = 0;
-var numGen1 = [Math.floor((Math.random() * 12 ) + 1)];
-var numGen2 = [Math.floor((Math.random() * 12 ) + 1)];
-var numGen3 = [Math.floor((Math.random() * 12 ) + 1)];
-var numGen4 = [Math.floor((Math.random() * 12 ) + 1)];
+var numGen1 = Math.floor((Math.random() * 12 ) + 1);
+var numGen2 = Math.floor((Math.random() * 12 ) + 1);
+var numGen3 = Math.floor((Math.random() * 12 ) + 1);
+var numGen4 = Math.floor((Math.random() * 12 ) + 1);
 var win = 0
 var loss = 0
 
@@ -26,9 +26,10 @@ var numberOptions = [
 	img: src="https://vignette.wikia.nocookie.net/marvel-contestofchampions/images/b/b4/Crystal_quest.png/revision/latest?cb=20151122000045"}
 ];
 
+$(document).ready(function(){
 for (var i = 0; i < numberOptions.length; i++) {
 	var imageCrystal = $("<img>");
-	imageCrystal.addClass("crystal-image");
+	imageCrystal.addClass("crystal-image crystal" + i);
 	imageCrystal.attr('src', numberOptions[i].img);
 	imageCrystal.attr("data-crystalvalue", numberOptions[i].option);
 	$("#crystals").append(imageCrystal);
@@ -39,10 +40,9 @@ $(".crystal-image").on("click", function() {
 	var crystalValue = ($(this).attr("data-crystalvalue"));
 	crystalValue = parseInt(crystalValue);
 	counter += crystalValue;
-	alert("New score: " + counter);
+	$("#your-score").text(counter);
 	checkWin();
 	checkLoss();
-	
 	
 });
 
@@ -50,29 +50,30 @@ function checkWin() {
 	if(counter == targetNumber) {
 		alert('YOU WIN!!!');
 		reset();
-	} else {
-		return;
-	}
-	win += 1;
-	$("#win").text(win);
+		win += 1;
+		$("#win").text(win);
+	} 
+	
 }
 function checkLoss() {
 	if(counter > targetNumber){
 		alert("YOU LOSE");
 		reset();
-	} else {
-		return;
-	}
-	loss +=1;
-	$("#loss").text(loss);
+		loss +=1;
+		$("#loss").text(loss);
+	} 
+	
 }
     
 function reset() {
 	counter = 0;
-	numGen1 = [Math.floor((Math.random() * 12 ) + 1)];
-	numGen2 = [Math.floor((Math.random() * 12 ) + 1)];
-	numGen3 = [Math.floor((Math.random() * 12 ) + 1)];
-	numGen4 = [Math.floor((Math.random() * 12 ) + 1)];
+	for (var i = 0; i < numberOptions.length; i++) {
+	console.log(imageCrystal);
+	numberOptions[i].option = Math.floor((Math.random() * 12 ) + 1);
+	$('.crystal' + i).attr("data-crystalvalue", numberOptions[i].option);	
 }
 
+	
+}
+});
 
