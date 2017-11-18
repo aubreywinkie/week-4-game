@@ -33,6 +33,8 @@ for (var i = 0; i < numberOptions.length; i++) {
 	imageCrystal.attr('src', numberOptions[i].img);
 	imageCrystal.attr("data-crystalvalue", numberOptions[i].option);
 	$("#crystals").append(imageCrystal);
+	$("#instructions").toUpperCase;
+	// can you do this?
 }
 
 $(".crystal-image").on("click", function() {
@@ -67,6 +69,9 @@ function checkLoss() {
     
 function reset() {
 	counter = 0;
+	$("#your-score").text(counter);
+	targetNumber = [Math.floor(Math.random() * 102 + 19 )];
+	$("#number-to-guess").text(targetNumber);
 	for (var i = 0; i < numberOptions.length; i++) {
 	console.log(imageCrystal);
 	numberOptions[i].option = Math.floor((Math.random() * 12 ) + 1);

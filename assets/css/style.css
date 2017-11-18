@@ -1,3 +1,15 @@
+body {
+	text-align: center;
+	font-family: "IMPACT";
+	font-size: 16px;
+	line-height: 1.5;
+
+	color: #f3f1f1;
+  	background-color: #385fad;
+	background-image: url("light-wool.png"); 
+}
+
+
  .crystal-image {
       width: 200px;
       height: 200px;
@@ -5,6 +17,11 @@
       padding: 20px;
   }
 
+
+#title {
+	border: 10px;
+	border-style: dashed;
+}
  #instructions {
- 	
+
  }
